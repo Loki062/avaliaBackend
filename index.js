@@ -1,10 +1,17 @@
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
+const cors = require('cors');
 
 const prisma = new PrismaClient();
 const app = express();
 app.use(express.json());
 
+app.use(cors({
+    origin: "https://avalia-es-back.vercel.app/",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+  }));
+  
 // Rota de Login
 app.post('/login', async (req, res) => {
   const { email, senha } = req.body;
