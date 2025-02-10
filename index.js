@@ -4,6 +4,8 @@ const cors = require('cors');
 
 const prisma = new PrismaClient();
 const app = express();
+
+//midddlewlare
 app.use(express.json());
 
 app.use(cors({
@@ -11,6 +13,13 @@ app.use(cors({
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
   }));
+
+  app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Welcome to the Agendamentos API!");
+});
+
   
 // Rota de Login
 app.post('/login', async (req, res) => {
@@ -54,4 +63,8 @@ app.post('/responder', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+const port = 3333;
+
+app.listen(process.env.PORT || port,()=> {
+  console.log(`server listening on port ${port}`);
+});
