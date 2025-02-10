@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "prisma generate",
     "build": "prisma generate",
-    "start": "node build/index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
